@@ -1,0 +1,170 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx1
+  labels:
+    type: pv
+    sys: test
+    pv: nginx1
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx2
+  labels:
+    type: pv
+    sys: test
+    pv: nginx2
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx3
+  labels:
+    type: pv
+    sys: test
+    pv: nginx3
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx4
+  labels:
+    type: pv
+    sys: test
+    pv: nginx4
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx5
+  labels:
+    type: pv
+    sys: test
+    pv: nginx5
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx6
+  labels:
+    type: pv
+    sys: test
+    pv: nginx6
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx7
+  labels:
+    type: pv
+    sys: test
+    pv: nginx7
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx8
+  labels:
+    type: pv
+    sys: test
+    pv: nginx8
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nginx9
+  labels:
+    type: pv
+    sys: test
+    pv: nginx9
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs: 
+    path: /nfs/data/test
+    server: 192.168.1.101

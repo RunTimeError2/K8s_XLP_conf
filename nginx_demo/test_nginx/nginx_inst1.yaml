@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-nginx1
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests: 
+      storage: 1Gi
+  storageClassName: nfs
+  selector:
+    matchLabels:
+      type: pv
+      sys: test
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx1
+  namespace: default
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      type: app
+      sys: test
+      app: nginx1
+  template:
+    metadata:
+      labels:
+        type: app
+        sys: test
+        app: nginx1
+    spec:
+      volumes:
+      - name: pv-data
+        persistentVolumeClaim:
+          claimName: nfs-nginx1
+      containers:
+      - name: nginx1
+        image: nginx
+        ports:
+        - name: outer
+          containerPort: 80
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: pv-data
+        imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx1
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+  - name: outer
+    port: 80
+    targetPort: 80
+    nodePort: 30080
+  selector:
+    type: app
+    sys: test
+    app: nginx1

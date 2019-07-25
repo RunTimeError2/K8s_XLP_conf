@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mediawiki
+spec:
+  replicas: 1
+  selector:
+    app: mediawiki
+  template:
+    metadata:
+      labels:
+        app: mediawiki
+    spec:
+      volumes:
+      - name: datavol
+        hostPath:
+          path: /data/xlpsystem/mediawiki
+      - name: devvol
+        hostPath:
+          path: /data/xlpsystem/mediawiki_dev
+      containers:
+      - name: mediawiki
+        image: xlpsystem/mediawiki:20180827140844
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /xlp_data
+          name: datavol
+        - mountPath: /xlp_dev
+          name: devvol
+        imagePullPolicy: IfNotPresent

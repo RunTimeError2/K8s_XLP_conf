@@ -1,0 +1,54 @@
+# mariadb
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-xlpsystem-mariadb
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: nfs
+  selector:
+    matchLabels:
+      type: pv-nfs
+      sys: xlpsystem
+      pv: mariadb
+---
+# mediawiki
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-xlpsystem-mediawiki
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: nfs
+  selector:
+    matchLabels:
+      type: pv-nfs
+      sys: xlpsystem
+      pv: mediawiki
+---
+# mediawiki_dev
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-xlpsystem-mediawiki-dev
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: nfs
+  selector:
+    matchLabels:
+      type: pv-nfs
+      sys: xlpsystem
+      pv: mediawiki-dev
+

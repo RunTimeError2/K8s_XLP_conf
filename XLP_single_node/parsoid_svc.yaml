@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: parsoid
+spec:
+  ports:
+  - port: 8000
+  selector:
+    app: parsoid

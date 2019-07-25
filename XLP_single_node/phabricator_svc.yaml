@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: phabricator
+spec:
+  type: NodePort
+  ports:
+  - port: 443
+    nodePort: 30443
+    name: https
+  - port: 22
+    nodePort: 30022
+    name: ssh
+  - port: 80
+    nodePort: 30005
+    name: outer
+  selector:
+    app: phabricator

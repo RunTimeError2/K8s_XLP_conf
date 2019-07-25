@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: wordpress
+spec:
+  replicas: 1
+  selector:
+    app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      volumes:
+      - name: datavol
+        hostPath:
+          path: /data/xlpsystem/wordpress
+      containers:
+      - name: wordpress
+        image: xlpsystem/wordpress:20180820185725
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: datavol
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: 'mariadb'
+        - name: WORDPRESS_DB_PASSWORD
+          value: 'W2qgpsLtQt'

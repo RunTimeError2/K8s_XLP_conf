@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: matomo
+spec:
+  replicas: 1
+  selector:
+    app: matomo
+  template:
+    metadata:
+      labels:
+        app: matomo
+    spec:
+      volumes:
+      - name: datavol
+        hostPath: 
+          path: /data/xlpsystem/matomo
+      containers:
+      - name: matomo
+        image: xlpsystem/matomo:20180820163542
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: datavol
+        imagePullPolicy: IfNotPresent

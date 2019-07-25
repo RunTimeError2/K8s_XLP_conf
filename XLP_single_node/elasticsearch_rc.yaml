@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: elasticsearch
+spec:
+  replicas: 1
+  selector:
+    app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      volumes:
+      - name: datavol
+        hostPath: 
+          path: /data/xlpsystem/elasticsearch
+      containers:
+      - name: elasticsearch
+        image: xlpsystem/elasticsearch:20180822142218
+        #command: ["bash", "-c", "ulimit -l unlimited && sysctl -w vm.max_map_count=262144 && exec su elasticsearch docker-entrypoint.sh"]
+        ports:
+        - containerPort: 9200
+          name: outer
+        - containerPort: 9300
+          name: inner
+        volumeMounts:
+        - mountPath: /usr/share/elasticsearch/data
+          name: datavol
+        env:
+        - name: "discovery.type"
+          value: "single-node"
+        - name: "bootstrap.memory_lock"
+          value: "true"
+        - name: "ES_JAVAJOPTS"
+          value: "-Xms512m -Xmx512m"
+        imagePullPolicy: IfNotPresent

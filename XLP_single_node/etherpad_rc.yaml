@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: etherpad
+spec:
+  replicas: 1
+  selector:
+    app: etherpad
+  template:
+    metadata:
+      labels:
+        app: etherpad
+    spec:
+      containers:
+      - name: etherpad
+        image: tvelocity/etherpad-lite:latest
+        ports:
+        - containerPort: 9001
+        env:
+        - name: ETHERPAD_DB_HOST
+          value: 'mariadb'
+        - name: ETHERPAD_DB_PASSWORD
+          value: 'W2qgpsLtQt'
+        imagePullPolicy: IfNotPresent

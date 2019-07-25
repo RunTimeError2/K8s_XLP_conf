@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kibana
+spec:
+  replicas: 1
+  selector:
+    app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+      - name: kibana
+        image: xlpsystem/kibana:20180821233221
+        ports:
+        - containerPort: 5601
+        imagePullPolicy: IfNotPresent
