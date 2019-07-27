@@ -1,7 +1,7 @@
 #! /bin/bash
-#export LC_ALL=C
-#cp /etc/apt/sources.list /etc/apt/sources.list.bak
-#cp ./sources.list /etc/apt/sources.list
+export LC_ALL=C
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+cp ./sources.list /etc/apt/sources.list
 apt-get update
 apt-get install -y docker.io 
 cp ./docker.service /lib/systemd/system/docker.service
@@ -14,8 +14,8 @@ cp ./kubernetes.list /etc/apt/sources.list.d/
 apt-get update
 apt-get install -y kubelet=1.15.0-00 kubeadm=1.15.0-00 kubectl=1.15.0-00
 
-#rm /etc/resolv.conf
-#cp ./resolv.conf /etc/
+rm /etc/resolv.conf
+cp ./resolv.conf /etc/
 
 image=(
     kube-apiserver:v1.15.0
