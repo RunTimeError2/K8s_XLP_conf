@@ -5,6 +5,7 @@ systemctl stop docker
 rm -rf /var/lib/cni/
 rm -rf /var/lib/kubelet/*
 rm -rf /etc/cni/
+rm -rf /var/lib/etcd
 ifconfig cni0 down
 ifconfig flannel.1 down
 ifconfig docker0 down
