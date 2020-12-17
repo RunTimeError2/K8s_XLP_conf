@@ -3,10 +3,10 @@
 #cp /etc/apt/sources.list /etc/apt/sources.list.bak
 #cp ./sources.list /etc/apt/sources.list
 apt-get update
-apt-get install -y docker.io 
-cp ./docker.service /lib/systemd/system/docker.service
-systemctl daemon-reload
-systemctl restart docker
+#apt-get install -y docker.io 
+#cp ./docker.service /lib/systemd/system/docker.service
+#systemctl daemon-reload
+#systemctl restart docker
 
 apt-get install -y apt-transport-https
 curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -
